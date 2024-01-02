@@ -1,19 +1,33 @@
-<div class="w-full min-w-[750px] max-w-7xl bg-white rounded shadow-lg shadow-gray-900 mb-12">
+<div
+  class="w-full min-w-[750px] max-w-7xl bg-white rounded shadow-lg shadow-gray-900 mb-12"
+>
+  <nav>
+    <button type="button" (click)="toggle()">Toggle Open/Close</button>
+  </nav>
+
+  <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+    <p>The box is now {{ isOpen ? "Open" : "Closed" }}!</p>
+  </div>
   <div class="flex justify-between border-b border-b-slate-200 min-h-[400px]">
     <div class="bg-violet-50 flex justify-center flex-col p-8">
       <h1 class="relative mb-4 text-4xl h-12">
         <span class="absolute top-0.5 left-0.5 text-rose-400 z-10">Fade</span>
         <span class="absolute z-20">Fade</span>
       </h1>
-      <button type="button" class="py-2 px-8 first-letter:mb-2 text-white bg-lime-500"
-        (click)="toggleEvents1()">Toggle</button>
+      <button
+        type="button"
+        class="py-2 px-8 first-letter:mb-2 text-white bg-lime-500"
+        (click)="toggleEvents1()"
+      >
+        Toggle
+      </button>
     </div>
     <div class="p-8 w-full flex justify-center flex-col">
       <ng-container *ngIf="showEvents1">
-        <div 
-          *ngFor="let e of events" 
-          [ngClass]="e.bgColor" 
-          class="item p-4 rounded-xl w-full mb-4" 
+        <div
+          *ngFor="let e of events"
+          [ngClass]="e.bgColor"
+          class="item p-4 rounded-xl w-full mb-4"
           @fade
           (@fade.start)="toggleFlag = true"
           (@fade.done)="toggleFlag = false"
@@ -24,24 +38,34 @@
       </ng-container>
     </div>
   </div>
-  
+
   <div class="flex justify-between border-b border-b-slate-200 min-h-[400px]">
     <div class="bg-violet-50 flex justify-center flex-col p-8">
       <h1 class="relative mb-4 text-4xl h-24">
-        <span class="absolute top-0.5 left-0.5 text-rose-400 z-10">Fade Slide</span>
+        <span class="absolute top-0.5 left-0.5 text-rose-400 z-10"
+          >Fade Slide</span
+        >
         <span class="absolute z-20">Fade Slide</span>
       </h1>
-      <button type="button" class="py-2 px-8 first-letter:mb-2 text-white bg-lime-500"
-        (click)="toggleEvents2()">Toggle</button>
+      <button
+        type="button"
+        class="py-2 px-8 first-letter:mb-2 text-white bg-lime-500"
+        (click)="toggleEvents2()"
+      >
+        Toggle
+      </button>
     </div>
     <div class="p-8 w-full flex justify-center flex-col">
-      <div *ngIf="showEvents2" @fadeSlide
+      <div
+        *ngIf="showEvents2"
+        @fadeSlide
         (@fadeSlide.start)="toggleFlag = true"
-        (@fadeSlide.done)="toggleFlag = false">
-        <div 
-          *ngFor="let e of events" 
-          [ngClass]="e.bgColor" 
-          class="item p-4 rounded-xl w-full mb-4" 
+        (@fadeSlide.done)="toggleFlag = false"
+      >
+        <div
+          *ngFor="let e of events"
+          [ngClass]="e.bgColor"
+          class="item p-4 rounded-xl w-full mb-4"
         >
           <div class="text-sm">{{ e.time }}</div>
           <div class="font-bold">{{ e.action }}</div>
